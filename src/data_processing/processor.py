@@ -4,7 +4,7 @@ import torch
 from torch.utils.data import TensorDataset
 from transformers import InputExample
 
-from t5_experiments.data_processing.utils import get_encoded_code_tokens
+from src.data_processing.utils import get_encoded_code_tokens
 
 
 def load_and_cache_examples(data_file, local_rank, max_seq_length, tokenizer, evaluate=False,

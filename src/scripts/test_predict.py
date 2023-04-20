@@ -3,9 +3,9 @@ import os
 import csv
 import json
 
-from t5_experiments.eval.conala_eval import calculate_bleu_from_lists
-from t5_experiments.test_lm import T5LMClassifier
-from t5_experiments.data_processing.utils import read_labels, get_encoded_code_tokens
+from src.eval.conala_eval import calculate_bleu_from_lists
+from src.test_lm import T5LMClassifier
+from src.data_processing.utils import read_labels, get_encoded_code_tokens
 
 import wandb
 wandb.init(project="critique_project", entity="debjitpaul")

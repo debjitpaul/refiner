@@ -23,10 +23,10 @@ from transformers import (
     get_linear_schedule_with_warmup, T5ForConditionalGeneration, T5Tokenizer, T5Config
 )
 
-from t5_experiments.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
-from t5_experiments.data_processing.processor import load_and_cache_examples
-from t5_experiments.data_processing.utils import get_encoded_code_tokens
-from t5_experiments.eval.conala_eval import calculate_bleu_from_lists
+from src.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
+from src.data_processing.processor import load_and_cache_examples
+from src.data_processing.utils import get_encoded_code_tokens
+from src.eval.conala_eval import calculate_bleu_from_lists
 #from accelerate import Accelerator
 #accelerator = Accelerator()
 

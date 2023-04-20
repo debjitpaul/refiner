@@ -8,7 +8,7 @@ import token
 import tokenize
 import argparse
 
-from t5_experiments.eval import bleu_score
+from src.eval import bleu_score
 
 # Main function for CodaLab evaluation purposes
 def main():
