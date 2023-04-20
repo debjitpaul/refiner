@@ -3,4 +3,11 @@ Official implementation of [REFINER: Reasoning Feedback on Intermediate Represen
 
 
 This repo proposes REFINER, an interaction-based framework for natural language reasoning tasks 🔥. 
+
+## Getting started 
+
+**Training**
+
+**Inference**
+
 ## Coming Soon
