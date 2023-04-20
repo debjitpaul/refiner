@@ -1,4 +1,4 @@
-for lm in t5-small t5-base t5-large
+for lm in t5-base t5-large
 do
 for l in 0.0001 0.0005 0.001 0.003 0.005
 do
