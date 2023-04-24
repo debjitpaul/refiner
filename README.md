@@ -10,7 +10,7 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 | Data                       | Reference                                                    | Output  | Description                                                  |
 | :-------------------------- | ------------------------------------------------------------ | ------- | ------------------------------------------------------------ |
-| Math Word Problem           | [📖](https://arxiv.org/pdf/2103.07191.pdf) , [🗂️](https://github.com/arkilpatel/SVAMP/tree/main/data/mawps-asdiv-a_svamp_without_questions), [🔗](https://github.com/arkilpatel/SVAMP), [📄](https://arxiv.org/pdf/2103.07191.pdf) | Math Equations and Answers | Generate an equation given a math word problem question |
+| Math Word Problem           | [📖](https://arxiv.org/pdf/2103.07191.pdf) , [🗂️](https://github.com/arkilpatel/SVAMP/tree/main/data/mawps-asdiv-a_svamp_without_questions), [🔗](https://github.com/arkilpatel/SVAMP) | Math Equations and Answers | Generate an equation given a math word problem question |
 
 2. [Sythethic Natural Language Reasoning]()
 3. [Moral Stories]()
