@@ -10,12 +10,12 @@ from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 import wandb
 import torch.nn.functional as F
-
+import peft
 from transformers import (
     AdamW,
     get_linear_schedule_with_warmup, T5ForConditionalGeneration, T5Tokenizer, T5Config
 )
-
+from peft import get_peft_config, get_peft_model, LoraConfig, TaskType 
 from src.data_processing.processor import load_and_cache_examples
 from src.data_processing.utils import get_encoded_code_tokens
 from src.eval.conala_eval import calculate_bleu_from_lists
@@ -34,6 +34,7 @@ class REFINER:
                  pretrained_model_name_or_path,
                  number_turn,
                  exploration_number,
+                 lora,
                  threads=4,
                  cache_dir='data/pretrained/',
                  do_lower_case=True,
@@ -46,6 +47,7 @@ class REFINER:
         self.output_critique_model = output_critique_model
         self.number_turn=number_turn,
         self.exploration_number=exploration_number,
+        self.lora=lora,
 
         self.logger = logging.getLogger(__name__)
         self.pretrained_model_name_or_path = pretrained_model_name_or_path
@@ -98,6 +100,7 @@ class REFINER:
               per_gpu_train_batch_size,
               gradient_accumulation_steps,
               num_train_epochs,
+              lora,
               learning_rate,
               number_turn,
               exploration_number,
@@ -129,6 +132,10 @@ class REFINER:
             config=self.config,
             cache_dir=self.cache_dir,
         )
+        
+        if lora: 
+            peft_config = LoraConfig(task_type=TaskType.SEQ_2_SEQ_LM, inference_mode=False, r=8, lora_alpha=32, lora_dropout=0.1)
+            model = get_peft_model(model, peft_config)
         
         model.to(self.device)
 
