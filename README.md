@@ -25,7 +25,8 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 3. [Train the warm start generator model with critic in the loop. For training we used oracle critic.](#Refiner_Training)
 4. [Inference using trained critic model in the loop.](#Inference)
 
-### Do you have challenge in finetuning LLMs? Try training REFINER with LORA .  
+### Do you have challenge in finetuning LLMs? 
+> Try training REFINER with LORA [📖](https://arxiv.org/pdf/2106.09685.pdf) .  
 
 
 ### For Few-Shot Setting GPT3.5 Setting :  
