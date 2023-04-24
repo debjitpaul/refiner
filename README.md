@@ -15,10 +15,6 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 | Moral Stories           | [📖](https://aclanthology.org/2021.emnlp-main.54.pdf) , [🗂️](https://tinyurl.com/moral-stories-data), [🔗](https://huggingface.co/datasets/demelin/moral_stories) | Moral Norm (z) and Moral Action (y) | Given a context x consisting of a situation, an intention, and an immoral action, the model needs to generate the moral norm z and the moral action y |
 
 
-#### Download Data
-
-
-
 ### For Supervised Instruction Finetuning Steps: 
 1. [Train a Generator model without Critic in the loop (Warm Start).](#Train_Generator)
 2. [Train a Critic model with negative instances and feedbacks.](#Train_Crtiic)
@@ -26,14 +22,11 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 4. [Inference using trained critic model in the loop.](#Inference)
 
 ### Do you have challenge in finetuning LLMs? 
-5. [Training REFINER with LORA](#Refiner_Training_with_Lora) [📖](https://arxiv.org/pdf/2106.09685.pdf).
+5. [Training REFINER with LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS (LORA)](#Refiner_Training_with_Lora) [📖](https://arxiv.org/pdf/2106.09685.pdf).
 
 ### Baseline Train PPO:
 Paper: [📖](https://arxiv.org/abs/2210.01241)| Code: [🔗](https://rl4lms.apps.allenai.org/)
-
-
-### For Few-Shot Setting GPT3.5 Setting :  
-
+  
 
 #### 1. Train Generator
 
@@ -56,8 +49,6 @@ python3 src/scripts/test_predict.py --training-file data/mwp/critique_train.json
 ```
 python3 src/scripts/test_predict.py --training-file data/mwp/critique_train.json --validation-file data/mwp/critique_val.json --language-model google/flan-t5-base --model-dir flan_t5_large_model --critique_model-dir output_critique  --epochs 10 --batch-size 8 --number_turn 4
 ```
-
-
 
 ## Citation
 
