@@ -12,6 +12,8 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 2. Sythethic Natural Language Reasoning 
 3. Moral Stories 
 
+#### Download Data
+
 
 ### For Supervised Instruction Finetuning Setting Steps
 > 1. Train a Generator model without Critic in the loop (Warm Start).
