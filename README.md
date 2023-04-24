@@ -8,9 +8,9 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 ### Data 
 
-1. Math Word Problem
-2. Sythethic Natural Language Reasoning 
-3. Moral Stories 
+1. [Math Word Problem](https://github.com/arkilpatel/SVAMP) 
+2. [Sythethic Natural Language Reasoning]()
+3. [Moral Stories]()
 
 #### Download Data
 
