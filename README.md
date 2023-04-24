@@ -7,7 +7,10 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 ## Getting started 
 
 ### Data 
-To Do
+
+1. Math Word Problem
+2. Sythethic Natural Language Reasoning 
+3. Moral Stories 
 
 
 ### For Supervised Instruction Finetuning Setting Steps
