@@ -6,6 +6,9 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 ## Getting started 
 
+### Data 
+To Do
+
 
 ### For Supervised Instruction Finetuning Setting Steps
 > 1. Train a Generator model without Critic in the loop (Warm Start).
