@@ -1,5 +1,8 @@
 # REFINER: Reasoning Feedback on Intermediate Representations :rocket:
 Official implementation of [REFINER: Reasoning Feedback on Intermediate Representations](https://arxiv.org/pdf/2304.01904.pdf)
+[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
+[![MIT License](https://img.shields.io/github/license/m43/focal-loss-against-heuristics)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2210.07228-b31b1b.svg)](https://arxiv.org/pdf/2304.01904.pdf)
 
 
 This repo proposes REFINER, an interaction-based framework for natural language reasoning tasks 🔥. REFINER is a framework that refines LMs reasoning capabilities through feedback. Our work is the first to investigate how interacting with fine-grained reasoning feedback on intermediate reasoning steps impacts the performance of LMs on reasoning tasks.
@@ -12,6 +15,8 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 - dependencies can be installed using `requirements.txt`
 
 ### Setup
+
+
 
 Install VirtualEnv using the following (optional):
 
