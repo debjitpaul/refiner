@@ -26,10 +26,10 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 4. [Inference using trained critic model in the loop.](#Inference)
 
 ### Do you have challenge in finetuning LLMs? 
-> Try [training REFINER](#Refiner_Training_with_Lora) with LORA [📖](https://arxiv.org/pdf/2106.09685.pdf) . 
+Try [training REFINER](#Refiner_Training_with_Lora) with LORA [📖](https://arxiv.org/pdf/2106.09685.pdf) . 
 
 ### Baseline Train PPO:
-> Paper: [📖](https://arxiv.org/abs/2210.01241)| Code: [🔗](https://rl4lms.apps.allenai.org/)
+Paper: [📖](https://arxiv.org/abs/2210.01241)| Code: [🔗](https://rl4lms.apps.allenai.org/)
 
 
 ### For Few-Shot Setting GPT3.5 Setting :  
