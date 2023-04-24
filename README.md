@@ -29,7 +29,7 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 > Try [training REFINER](#Refiner_Training_with_Lora) with LORA [📖](https://arxiv.org/pdf/2106.09685.pdf) . 
 
 ### Baseline Train PPO:
-> [📖](https://arxiv.org/abs/2210.01241)| [🔗](https://rl4lms.apps.allenai.org/)
+> Paper: [📖](https://arxiv.org/abs/2210.01241)| Code: [🔗](https://rl4lms.apps.allenai.org/)
 
 
 ### For Few-Shot Setting GPT3.5 Setting :  
