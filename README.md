@@ -19,13 +19,13 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 
 
-### For Supervised Instruction Finetuning Setting Steps]()
-1. [Train a Generator model without Critic in the loop (Warm Start).
+### For Supervised Instruction Finetuning Setting Steps
+1. [Train a Generator model without Critic in the loop (Warm Start).](#Train Generator)
 > 2. Train a Critic model with negative instances and feedbacks.
 > 3. Train the warm start generator model with critic in the loop. For training we used oracle critic. 
 > 4. Inference using trained critic model in the loop.
 
-**1. Train Generator**
+####1. Train Generator**
 
 ```
 python3 src/scripts/finetune.py --training-file path_train_data --validation-file path_val_data --language-model google/flan-t5-base --model-dir flan_t5_large_model  --epochs 10 --batch-size 8
