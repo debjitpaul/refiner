@@ -1,4 +1,4 @@
-# REFINER :rocket:
+# REFINER: Reasoning Feedback on Intermediate Representations :rocket:
 Official implementation of [REFINER: Reasoning Feedback on Intermediate Representations](https://arxiv.org/pdf/2304.01904.pdf)
 
 
