@@ -7,7 +7,7 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 ## Getting started 
 
 
-### For Supervised Setting Steps
+### For Supervised Instruction Finetuning Setting Steps
 > 1. Train a Generator model without Critic in the loop (Warm Start).
 > 2. Train a Critic model with negative instances and feedbacks.
 > 3. Train the warm start generator model with critic in the loop. For training we used oracle critic. 
