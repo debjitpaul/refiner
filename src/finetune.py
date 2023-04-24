@@ -14,10 +14,10 @@ from transformers import AutoModel, AutoTokenizer, GPT2Config
 from transformers import GPTJForCausalLM, AutoTokenizer
 from transformers import GPT2Tokenizer
 
-from t5_experiments.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
-from t5_experiments.data_processing.processor import load_and_cache_examples
-from t5_experiments.data_processing.utils import get_encoded_code_tokens
-from t5_experiments.eval.conala_eval import calculate_bleu_from_lists
+from src.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
+from src.data_processing.processor import load_and_cache_examples
+from src.data_processing.utils import get_encoded_code_tokens
+from src.eval.conala_eval import calculate_bleu_from_lists
 
 logger = logging.getLogger(__name__)
 
@@ -76,8 +76,9 @@ class T5LMClassifier:
         if local_rank not in [-1, 0]:
             torch.distributed.barrier()  # Make sure only the first process in distributed training will download model & vocab
 
-        self.config = GPT2Config() 
-        self.tokenizer = GPT2Tokenizer.from_pretrained(pretrained_model_name_or_path=self.pretrained_model_name_or_path,
+        self.config = T5Config.from_pretrained(pretrained_model_name_or_path=self.pretrained_model_name_or_path,
+                                                 cache_dir=self.cache_dir)
+        self.tokenizer = T5Tokenizer.from_pretrained(pretrained_model_name_or_path=self.pretrained_model_name_or_path,
                                                      do_lower_case=do_lower_case,
                                                      cache_dir=self.cache_dir)
         if self.tokenizer.pad_token is None:
@@ -258,7 +259,7 @@ class T5LMClassifier:
         eval_dataset, _ = load_and_cache_examples(test_file, local_rank=self.local_rank,
                                                   max_seq_length=self.max_seq_length, tokenizer=self.tokenizer,
                                                   evaluate=True)
-        model = transformers.GPT2LMHeadModel(self.output_model_dir)
+        model = T5ForConditionalGeneration.from_pretrained(self.output_model_dir)
         return self._predict(eval_dataset=eval_dataset,
                              per_gpu_eval_batch_size=per_gpu_eval_batch_size,
                              model=model,

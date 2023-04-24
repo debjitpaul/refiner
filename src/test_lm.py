@@ -620,7 +620,7 @@ class T5LMClassifier:
             _input = batch[0] #input to the equation generation model
             _attention = batch[1] # attention 
             _labels = batch[2]
-            num_turn = 4
+            num_turn = 3
             few = 1.0
             prev_token_ids = []
             prev_hint_ids = []
@@ -648,7 +648,9 @@ class T5LMClassifier:
                 
                 labels = self._tokenids2tokens(batch[2])
                 for i in range(len(_input)): # number of sequences = #batch_size * gradient_accumulation_steps
-                    #r , h_tok = self._critique_gen(critique_model, _input[i], tokens[i], token_ids[i], labels[i])
+                    # get automatic critic feedback 
+                    _ , h_tok = self._critique_gen(critique_model, _input[i], tokens[i], token_ids[i], labels[i])
+                    # get oracle feedback
                     _,  _h_tok , types = self._critique_function(tokens[i], labels[i], types)  
                     bleu, exact = calculate_bleu_from_lists(gold_texts=labels,
                                                            predicted_texts=tokens)
@@ -673,23 +675,12 @@ class T5LMClassifier:
                     _attention = _input.clone()
                     _attention[_input!=0] = 1
                     _attention.to(self.device)
-                    
-                    #if self._tokenids2tokens(prev_token_ids) != self._tokenids2tokens(token_ids) and turn>=2: 
-                    #    print(labels)
-                    #    print(self._tokenids2tokens(prev_token_ids), self._tokenids2tokens(token_ids)) 
-                    #    print(self._tokenids2tokens(prev_hint_ids))
-                    #    change+=1
 
                     print(self._tokenids2tokens(batch[2]))
                     prev_token_ids = token_ids
                     prev_hint_ids = hint_ids
                      
                     inputs = {"input_ids": _input, "attention_mask": _attention, "labels": batch[2]}
-                    #print(_h_tok)
-                    #print(tokens)
-                    #print(labels)
-                if exact==1.0:
-                    break
                     
             bleu, exact = calculate_bleu_from_lists(gold_texts=labels,
                                                            predicted_texts=tokens)

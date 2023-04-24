@@ -2,10 +2,15 @@ import argparse
 import os
 import csv
 import json
+import re
+import token
+import tokenize
 
 from src.eval.conala_eval import calculate_bleu_from_lists
-from src.test_lm import T5LMClassifier
+from src.finetune import T5LMClassifier
 from src.data_processing.utils import read_labels, get_encoded_code_tokens
+
+import wandb
 
 DATA_FOLDER = 'data'
 
@@ -18,6 +23,8 @@ def training(training_file, dev_file,
              language_model,
              grad_acc,
              sequence_length,
+             number_turn,
+             exploration_number,
              optimizer_algorithm='adam',
              noisy_file=None,):
 
@@ -26,18 +33,31 @@ def training(training_file, dev_file,
     classifier = T5LMClassifier(
             max_seq_length=sequence_length,
             output_model_dir=trained_models_dir,
-            output_critique_model=trained_critique_dir, 
+            output_critique_model=trained_critique_dir,
+            number_turn=number_turn,
+            exploration_number=exploration_number,
             cache_dir=os.path.join(DATA_FOLDER, 'pretrained'),
         pretrained_model_name_or_path=language_model
     )
     classifier.train(training_file, dev_file,
                          per_gpu_train_batch_size=per_gpu_train_batch_size,
                          learning_rate=learning_rate,
+                         number_turn=number_turn,
+                         exploration_number=exploration_number,
                          optimizer_algorithm=optimizer_algorithm,
                          num_train_epochs=epochs,
                      noisy_file=noisy_file,
                      gradient_accumulation_steps=grad_acc)
 
+def tokenize_for_bleu_eval(code):
+    code = re.sub(r'([^A-Za-z0-9_])', r' \1 ', code)
+    code = re.sub(r'([a-z])([A-Z])', r'\1 \2', code)
+    code = re.sub(r'\s+', ' ', code)
+    code = code.replace('"', '`')
+    code = code.replace('\'', '`')
+    tokens = [t for t in code.split(' ') if t]
+
+    return tokens
 
 def evaluate(test_file, trained_models_dir, trained_critique_dir, sequence_length,
              per_gpu_eval_batch_size, language_model):
@@ -72,12 +92,21 @@ def evaluate(test_file, trained_models_dir, trained_critique_dir, sequence_lengt
                 continue
             label = ' '.join(encoded_reconstr_code)
             new_labels.append(labels[index])
-            print(preds[index].strip() == labels[index].strip()) 
-            if preds[index].strip() == labels[index].strip():
-                outfile.write(inputs[index] +'\t'+ preds[index] +'\t'+labels[index]+'\t'+ "yes" +'\n')
-            else:
-                outfile.write(inputs[index] +'\t'+ preds[index] +'\t'+labels[index]+'\t'+ "no" +'\n')
-            
+            outfile.write(inputs[index] +'\t'+ preds[index] +'\t'+labels[index]+'\t'+ "yes" +'\n')
+
+    index = 0
+    sub_error = 0 
+    c_hyp = [tokenize_for_bleu_eval(s.lower()) for s in preds]
+    c_ref = [tokenize_for_bleu_eval(s.lower()) for s in new_labels]
+    
+    for h, r in zip(c_hyp, c_ref): 
+        if h != r:
+            if 'substract' in r and 'add' not in r and 'multiply' not in r and 'divide' not in r:
+                sub_error +=1
+                print(sub_error)
+                print(str(inputs[index]), h, r, "no", '\n')
+        
+        index += 1
      
     eval_results = calculate_bleu_from_lists(gold_texts=new_labels, predicted_texts=preds)
     print(eval_results)
@@ -101,15 +130,19 @@ def parse_args():
                         help='the folder/google bucket in which the model will be stored or loaded from.')
     parser.add_argument('--epochs', default=20,
                         help='number of epochs to train')
-    parser.add_argument('--batch-size', default=1,
+    parser.add_argument('--batch-size', default=4,
                         help='batch size')
-    parser.add_argument('--val-batch-size', default=1,
+    parser.add_argument('--val-batch-size', default=4,
                         help='validation batch size')
-    parser.add_argument('--number_turn', default=4,
+    parser.add_argument('--number_turn', default=3,
                         help='learning rate')
     parser.add_argument('--lr', default=0.0001,
                         help='learning rate')
-    parser.add_argument('--gradient-accumulation', default=1)
+    parser.add_argument('--seq_len', default=256,
+                        help='sequence length')
+    parser.add_argument('--exp_num', default=3,
+                        help='language model randomly generates exp_num outputs at each step')                   
+    parser.add_argument('--gradient-accumulation', default=4)
     parser.add_argument('--local_rank', default=-1)
     args = parser.parse_args()
     
@@ -128,7 +161,9 @@ def main():
                  per_gpu_train_batch_size=int(args.batch_size),
                  epochs=int(args.epochs),
                  learning_rate=float(args.lr),
-                 sequence_length=512,
+                 sequence_length=args.seq_len,
+                 number_turn=args.number_turn,
+                 exploration_number=args.exp_num,
                  noisy_file=args.noisy_file,
                  language_model=language_model,
                  grad_acc=int(args.gradient_accumulation))
@@ -138,7 +173,7 @@ def main():
                                       trained_models_dir=args.model_dir,
                                       trained_critique_dir=args.critique_model_dir,
                                       per_gpu_eval_batch_size=int(args.val_batch_size),
-                                      sequence_length=512,
+                                      sequence_length=args.seq_len,
                                           language_model=language_model
                                     )
 if __name__ == '__main__':

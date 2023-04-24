@@ -6,14 +6,11 @@ import re
 import token
 import tokenize
 
-#from transformers import TrainingArguments, Trainer
-
 from src.eval.conala_eval import calculate_bleu_from_lists
-from src.t5_lm import T5LMClassifier
+from src.refiner import REFINER
 from src.data_processing.utils import read_labels, get_encoded_code_tokens
 
 import wandb
-wandb.init(project="critique_project", entity="debjitpaul")
 
 DATA_FOLDER = 'data'
 
@@ -33,7 +30,7 @@ def training(training_file, dev_file,
 
     if not os.path.exists(trained_models_dir):
         os.mkdir(trained_models_dir)
-    classifier = T5LMClassifier(
+    classifier = REFINER(
             max_seq_length=sequence_length,
             output_model_dir=trained_models_dir,
             output_critique_model=trained_critique_dir,
@@ -64,7 +61,7 @@ def tokenize_for_bleu_eval(code):
 
 def evaluate(test_file, trained_models_dir, trained_critique_dir, sequence_length,
              per_gpu_eval_batch_size, language_model):
-    _classifier = T5LMClassifier(max_seq_length=sequence_length,
+    _classifier = REFINER(max_seq_length=sequence_length,
                                  output_model_dir=trained_models_dir,
                                  output_critique_model=trained_critique_dir, 
                                  cache_dir=os.path.join(DATA_FOLDER, 'pretrained'),

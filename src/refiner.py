@@ -2,39 +2,31 @@
 import logging
 from tokenizers import Token
 import torch
-torch.manual_seed(123)
 from torch import nn
 from torch.optim import Adam
 from torch.autograd import Variable
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, ConcatDataset
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
-from transformers import AutoModelForCausalLM 
-from torch.nn import CrossEntropyLoss
 import wandb
 import torch.nn.functional as F
-wandb.init(project="dual_learning_AC", entity="debjitpaul")
-
-import random
-random.seed(123)
 
 from transformers import (
     AdamW,
     get_linear_schedule_with_warmup, T5ForConditionalGeneration, T5Tokenizer, T5Config
 )
 
-from src.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
 from src.data_processing.processor import load_and_cache_examples
 from src.data_processing.utils import get_encoded_code_tokens
 from src.eval.conala_eval import calculate_bleu_from_lists
-#from accelerate import Accelerator
-#accelerator = Accelerator()
+from accelerate import Accelerator
+accelerator = Accelerator()
 
 logger = logging.getLogger(__name__)
 
 import torch.distributed as dist
 
-class T5LMClassifier:
+class REFINER:
     def __init__(self,
                  max_seq_length,
                  output_model_dir,
@@ -173,7 +165,6 @@ class T5LMClassifier:
         # multi-gpu training (should be after apex fp16 initialization)
         if self.n_gpu > 1:
             model = torch.nn.DataParallel(model)
-            # critique_model = torch.nn.DataParallel(critique_model)
 
         # Distributed training (should be after apex fp16 initialization)
         if self.local_rank != -1:
@@ -231,11 +222,7 @@ class T5LMClassifier:
                 turn_loss = 0
                 loss = 0
                 reward = 0
-                penalty = 1
                 count = 0
-                prev_hint_ids = []
-                prev_token_ids = []
-                prev_input_ids = []
 
                 for turn in range(1, int(number_turn)+1):
                     outputs = model(**inputs) # equation generation model 
@@ -273,7 +260,6 @@ class T5LMClassifier:
                             
                             
                             ##### oracle critic ####
-
                             r , h_tok = self._critique_function(tokens[c], labels[i])
                             if r <= regret:
                                 h_best = h_tok
@@ -339,9 +325,6 @@ class T5LMClassifier:
                     policy_scheduler.step()  # Update learning rate schedule
                     
                     model.zero_grad()
-                    #critique_optimizer.step()
-                    #critique_scheduler.step()  # Update learning rate schedule
-                    #critique_model.zero_grad() 
                     
                     global_step += 1
 
@@ -415,7 +398,7 @@ class T5LMClassifier:
         # Eval!
         preds = []
         critique_model.eval()
-
+        max_generated_tokens = 50
         with torch.no_grad():
             if self.n_gpu > 1:
                 outs = critique_model.module.generate(input_ids=input_ids.to(self.device),
