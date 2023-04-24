@@ -11,6 +11,27 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 - compatible with python 3.8
 - dependencies can be installed using `requirements.txt`
 
+### Setup
+
+Install VirtualEnv using the following (optional):
+
+```shell
+$ [sudo] pip install virtualenv
+```
+
+Create and activate your virtual environment (optional):
+
+```shell
+$ virtualenv -p python3 venv
+$ source venv/bin/activate
+```
+
+Install all the required packages:
+
+```shell
+$ pip install -r requirements.txt
+```
+
 ### Data 
 
 | Data                       | Reference                                                    | Output  | Description                                                  |
