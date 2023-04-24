@@ -11,8 +11,8 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 | Data                       | Reference                                                    | Output  | Description                                                  |
 | :-------------------------- | ------------------------------------------------------------ | ------- | ------------------------------------------------------------ |
 | Math Word Problem           | [📖](https://arxiv.org/pdf/2103.07191.pdf) , [🗂️](https://github.com/arkilpatel/SVAMP/tree/main/data/mawps-asdiv-a_svamp_without_questions), [🔗](https://github.com/arkilpatel/SVAMP) | Math Equations (z) and Answers (y) | Generate an equation given a math word problem question |
-| Sythethic Natural Language Reasoning          | [📖](https://arxiv.org/pdf/2103.07191.pdf) , [🗂️](https://github.com/arkilpatel/SVAMP/tree/main/data/mawps-asdiv-a_svamp_without_questions), [🔗](https://github.com/arkilpatel/SVAMP) | Math Equations and Answers | Generate an equation given a math word problem question |
-| Moral Stories           | [📖](https://arxiv.org/pdf/2103.07191.pdf) , [🗂️](https://github.com/arkilpatel/SVAMP/tree/main/data/mawps-asdiv-a_svamp_without_questions), [🔗](https://github.com/arkilpatel/SVAMP) | Math Equations and Answers | Generate an equation given a math word problem question |
+| Sythethic Natural Language Reasoning          | [📖](https://crfm-helm.readthedocs.io/en/latest/) , [🗂️](https://github.com/stanford-crfm/helm), [🔗](https://github.com/stanford-crfm/helm/tree/main/src/helm/benchmark/scenarios) | Reasoning steps and Conclusions | This task requires the model to perform deductive reasoning and generate intermediate reasoning steps z and conclusions y using closed-world rules and facts. |
+| Moral Stories           | [📖](https://arxiv.org/pdf/2103.07191.pdf) , [🗂️](https://github.com/arkilpatel/SVAMP/tree/main/data/mawps-asdiv-a_svamp_without_questions), [🔗](https://github.com/arkilpatel/SVAMP) |  | Generate an equation given a math word problem question |
 
 
 #### Download Data
