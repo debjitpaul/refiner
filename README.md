@@ -1,4 +1,6 @@
-# REFINER: Reasoning Feedback on Intermediate Representations :rocket: [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
+# REFINER: Reasoning Feedback on Intermediate Representations :rocket: 
+
+[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
 [![MIT License](https://img.shields.io/github/license/m43/focal-loss-against-heuristics)](LICENSE)
 [![arXiv](https://img.shields.io/badge/arXiv-2210.07228-b31b1b.svg)](https://arxiv.org/pdf/2304.01904.pdf)
 
