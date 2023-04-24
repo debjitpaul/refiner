@@ -19,31 +19,34 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 
 
-### For Supervised Instruction Finetuning Setting Steps
+### For Supervised Instruction Finetuning Steps: 
 1. [Train a Generator model without Critic in the loop (Warm Start).](#Train_Generator)
-2. [Train a Critic model with negative instances and feedbacks.]()
-3. [Train the warm start generator model with critic in the loop. For training we used oracle critic.]()
-4. [Inference using trained critic model in the loop.]()
+2. [Train a Critic model with negative instances and feedbacks.](#Train_Crtiic)
+3. [Train the warm start generator model with critic in the loop. For training we used oracle critic.](#Refiner_Training)
+4. [Inference using trained critic model in the loop.](#Inference)
+
+### For Few-Shot Setting GPT3.5 Setting :  
+
 
 #### 1. Train Generator
 
 ```
 python3 src/scripts/finetune.py --training-file path_train_data --validation-file path_val_data --language-model google/flan-t5-base --model-dir flan_t5_large_model  --epochs 10 --batch-size 8
 ```
-**2. Train Critic**
+#### 2. Train Critic
 ```
 python3 src/scripts/finetune.py --training-file path_train_data --validation-file path_val_data --language-model google/flan-t5-base --model-dir flan_t5_large_model --epochs 10 --batch-size 8
 ```
-**3. Refiner Training** 
+#### 3. Refiner Training 
 ```
 python3 src/scripts/train_refiner.py --training-file data/mwp/critique_train.json --validation-file data/mwp/critique_val.json --language-model google/flan-t5-base --model-dir flan_t5_large_model --critique_model-dir output_critique  --epochs 10 --batch-size 8 --number_turn 4
 ```
-**4. Inference**
+#### 4. Inference
 ```
 python3 src/scripts/test_predict.py --training-file data/mwp/critique_train.json --validation-file data/mwp/critique_val.json --language-model google/flan-t5-base --model-dir flan_t5_large_model --critique_model-dir output_critique  --epochs 10 --batch-size 8 --number_turn 4
 ```
 
-### For Few-Shot Setting GPT3.5 Setting :  
+
 
 
 
