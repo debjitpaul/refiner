@@ -19,6 +19,10 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 ### Setup
 
+Start by cloning the repository:
+```bash
+git clone https://github.com/epfl-dlab/understanding-decoding.git
+```
 
 
 Install VirtualEnv using the following (optional):
