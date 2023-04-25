@@ -109,6 +109,16 @@
     margin-left: 40px;
   }
 }
+@media screen and (max-width: 1300px) {
+  .refiner-img {
+    width: 400px;
+  }
+  #header .top-bar-section ul li a {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
 #header .top-bar-section ul li:last-child {
   background: none;
 }
