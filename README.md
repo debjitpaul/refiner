@@ -25,6 +25,8 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 
 ## Method 
 
+We propose to solve these tasks by forcing the model to generate intermediate hypotheses (z) and improving them via structured feedback. We introduce an interactive framework named REFINER, made of two separate models: (a) a CRITIC model trained to provide structured feedback on intermediate reasoning steps and (b) a GENERATOR model trained to solve the reasoning task by first generating intermediate reasoning steps. The core idea of REFINER is to exploit the interaction between the generator model and the critic model, where the generator’s intermediate reasoning steps are improved via structured feedback from the critic. 
+
 ## Dependencies
 
 - compatible with python 3.8
@@ -33,6 +35,7 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 ## Setup
 
 Start by cloning the repository:
+
 ```bash
 git clone git@github.com:debjitpaul/refiner.git
 ```
