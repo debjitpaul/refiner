@@ -10,7 +10,7 @@ Official implementation of 📖 [REFINER: Reasoning Feedback on Intermediate Rep
 
 This repo proposes REFINER, an interaction-based framework for natural language reasoning tasks 🔥. REFINER is a framework that refines LMs reasoning capabilities through feedback. Our work is the first to investigate how interacting with fine-grained reasoning feedback on intermediate reasoning steps impacts the performance of LMs on reasoning tasks.
 
-[!Image](https://github.com/debjitpaul/refiner/blob/main/data/Figure1-motivational_example.gif)
+![Image](https://github.com/debjitpaul/refiner/blob/main/data/Figure1-motivational_example.gif)
 
 ## Getting started
 
