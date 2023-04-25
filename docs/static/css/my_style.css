@@ -1,0 +1,174 @@
+
+#header .navbar-fixed-top {
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 5px solid rgba(245, 23, 23, 0.61);
+}
+/* Header Style */
+#header {
+  background: #FFF;
+  width: 100%;
+  padding: 15px 10px;
+}
+#header .top-bar {
+  padding-left: 10mm;
+  background: none;
+}
+
+#header .top-bar .right {
+  float: right !important; 
+  padding-right: 3rem;
+  padding-top: 3.5mm
+
+}
+
+#header .top-bar .nav-item {
+  font-weight: 800;
+}
+.right {
+  float: right !important; 
+}
+
+#header .title-area {
+  list-style: none;
+  font-size: 20rem;
+  float: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media only screen and (min-width: 530px) and (max-width: 949px), only screen and (min-width: 950px) {
+  #header .top-bar-section ul {
+    margin-top: 10px;
+    list-style: none;
+  }
+}
+#header .top-bar-section ul li {
+  background: right center no-repeat;
+  list-style: none;
+}
+#header p {
+  color: #010b0b;
+  text-transform: capitalize;
+  border-left: 2px solid #020c0c;
+  float: left;
+}
+@media only screen and (min-width: 950px) {
+  #header p {
+    color: #4e4e4e;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 40px;
+    padding-left: 15px;
+    padding-right: 20px;
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 529px) {
+  #header p {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 530px) and (max-width: 949px) {
+  #header p {
+    font-size: 22px;
+  }
+}
+#header .top-bar-section ul.left {
+  margin-left: 5px;
+}
+
+#header .top-bar-section ul li a {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  background: none;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+  text-decoration:none;
+}
+@media only screen and (max-width: 529px) {
+  #header .top-bar-section ul li a {
+    line-height: 30px;
+  }
+}
+@media only screen and (min-width: 530px) and (max-width: 949px), only screen and (min-width: 950px) {
+  #header .top-bar-section ul li a.btn-vokare-small {
+    background: #00d1a5;
+    color: #FFFFFF;
+  }
+}
+@media only screen and (min-width: 530px) and (max-width: 949px) and only screen and (min-width: 950px), only screen and (min-width: 950px) and only screen and (min-width: 950px) {
+  #header .top-bar-section ul li:last-child {
+    margin-left: 40px;
+  }
+}
+#header .top-bar-section ul li:last-child {
+  background: none;
+}
+#header .top-bar-section ul li:first-child {
+  background: none;
+}
+#header .top-bar-section li.active a {
+  color: rgba(245, 23, 23, 0.61);
+  font-weight: 800;
+  border-bottom: 1mm solid rgba(245, 23, 23, 0.61);
+  padding-bottom: 2mm;
+}
+#header .top-bar-section li:hover a {
+  color: rgba(245, 23, 23, 0.61);
+  font-weight: 800;
+}
+
+html,
+body {
+  background: #fff;
+  font-family: 'Open Sans', sans-serif, 'helvetica';
+  color: #4e4e4e;
+  line-height: 22px;
+  height: 100%;
+}
+
+
+
+.btn-primary{
+--bs-btn-bg: rgba(245, 23, 23, 0.61);
+--bs-btn-border-color: rgba(245, 23, 23, 0.61);
+--bs-btn-hover-bg: red;
+--bs-btn-hover-color: black;
+--bs-btn-hover-border-color: red;
+}
+
+.form-check-input:checked{
+  background-color: rgba(245, 23, 23, 0.61);
+  border-color: rgba(245, 23, 23, 0.61);
+}
+#wrap {
+  min-height: 100%;
+  /* Negative indent footer by its height */
+  margin: 80px auto 0;
+  /* Pad bottom by footer height */
+}
+
+.page {
+  margin: 20px auto;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.ant-layout-footer{
+  padding: 24px;
+}
+
+.jtorxC{
+  text-align:center;
+
+}
+
+
