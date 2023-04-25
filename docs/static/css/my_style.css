@@ -93,6 +93,11 @@
   padding: 20px;
   text-decoration:none;
 }
+
+#header .top-bar-section .nav.secondary-nav.left li a {
+  padding: 3px;
+}
+
 @media only screen and (max-width: 529px) {
   #header .top-bar-section ul li a {
     line-height: 30px;
