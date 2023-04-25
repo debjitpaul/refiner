@@ -15,11 +15,16 @@ This repo proposes REFINER, an interaction-based framework for natural language 
 ## 🔍 Contents
 
 - [🌟 Overview](#-overview)
-- [🌟 Methods](#-method)
+- [🌟 Method](#-method)
 - [🔥 Dependencies](#-dependencies)
 - [🔥 Setup](#-setup)
 - [🔥Data](#-data)
 - [🚩Citation ](#-citation)
+
+### Overview 
+
+### Method 
+
 ### Dependencies
 
 - compatible with python 3.8
