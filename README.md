@@ -5,7 +5,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2210.07228-b31b1b.svg)](https://arxiv.org/pdf/2304.01904.pdf)
 
 
-Official implementation of 📖 [REFINER: Reasoning Feedback on Intermediate Representations](https://arxiv.org/pdf/2304.01904.pdf)
+Official implementation of 📖 [REFINER: Reasoning Feedback on Intermediate Representations](https://arxiv.org/pdf/2304.01904.pdf) 🔗 [Blog Post](https://debjitpaul.github.io/refiner/)
 
 ![Image](https://github.com/debjitpaul/refiner/blob/main/data/Figure1-motivational_example.gif)
 
