@@ -31,8 +31,10 @@ We propose to solve these tasks by forcing the model to generate intermediate hy
 
 - compatible with python 3.8
 - dependencies can be installed using `requirements.txt`
+- The codebase is built around [Hugging Face](https://huggingface.co/) ecosystem and [wandb](https://wandb.ai/site) (for monitoring and experiment management).
 
 ## Setup
+
 
 Start by cloning the repository:
 
