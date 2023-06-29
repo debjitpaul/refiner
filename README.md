@@ -114,9 +114,10 @@ python3 src/scripts/test_predict.py --training-file data/mwp/critique_train.json
 ## Citation
 
 ```
-@article{paul2023refiner,
+@misc{paul2023refiner,
   title={REFINER: Reasoning Feedback on Intermediate Representations},
   author={Paul, Debjit and Ismayilzada, Mete and Peyrard, Maxime and Borges, Beatriz and Bosselut, Antoine and West, Robert and Faltings, Boi},
+  eprint={2304.01904},
   journal={arXiv preprint arXiv:2304.01904},
   year={2023}
 }
