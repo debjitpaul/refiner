@@ -203,7 +203,7 @@ class T5LMClassifier:
 
                 model.train()
                 batch = tuple(t.to(self.device) for t in batch)
-                inputs = {"input_ids": batch[0], "attention_mask": batch[1]}#, "labels": batch[2]}#, 'label_mask': batch[3]}
+                inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[2]}
                 outputs = model(**inputs)
                 loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
 
