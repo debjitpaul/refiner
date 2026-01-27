@@ -62,6 +62,64 @@ Install all the required packages:
 $ pip install -r requirements.txt
 ```
 
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/debjitpaul/refiner.git
+cd refiner
+
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or: venv\Scripts\activate  # Windows
+
+# Install the package
+pip install -e .
+
+# For development
+pip install -e ".[dev]"
+```
+
+## 📁 Project Structure
+
+```
+refiner/
+├── src/
+│   └── refiner/
+│       ├── models/          # Generator and Critic models
+│       ├── training/        # Training loops and utilities
+│       ├── data/            # Data loading and preprocessing
+│       └── utils/           # Helper functions
+├── configs/                 # Configuration files
+├── data/                    # Datasets
+│   ├── mwp/                 # Math Word Problems
+│   ├── moral_stories/       # Moral Stories
+│   └── synthetic_nlr/       # Synthetic NL Reasoning
+├── scripts/                 # Training and evaluation scripts
+├── tests/                   # Unit tests
+└── docs/                    # Documentation
+```
+### Basic Usage
+
+```python
+from refiner import Generator, Critic, Refiner
+
+# Initialize models
+generator = Generator.from_pretrained("google/flan-t5-base")
+critic = Critic.from_pretrained("path/to/critic")
+
+# Create REFINER
+refiner = Refiner(generator, critic, num_turns=4)
+
+# Solve a problem
+question = "John has 5 apples. He buys 3 more. How many apples does he have?"
+answer = refiner.solve(question)
+print(answer)  # "8"
+```
+
 ## Data 
 
 | Data                       | Reference                                                    | Output  | Description                                                  |
