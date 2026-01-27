@@ -102,23 +102,7 @@ refiner/
 ├── tests/                   # Unit tests
 └── docs/                    # Documentation
 ```
-### Basic Usage
 
-```python
-from refiner import Generator, Critic, Refiner
-
-# Initialize models
-generator = Generator.from_pretrained("google/flan-t5-base")
-critic = Critic.from_pretrained("path/to/critic")
-
-# Create REFINER
-refiner = Refiner(generator, critic, num_turns=4)
-
-# Solve a problem
-question = "John has 5 apples. He buys 3 more. How many apples does he have?"
-answer = refiner.solve(question)
-print(answer)  # "8"
-```
 
 ## Data 
 
